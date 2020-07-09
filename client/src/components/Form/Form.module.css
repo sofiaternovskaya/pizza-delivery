@@ -1,0 +1,17 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--bgLightColor);
+  box-shadow: var(--boxShadow);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: box-shadow var(--transitionOptions);
+}
+
+.server-error {
+  box-shadow: var(--boxShadowAlarm);
+}

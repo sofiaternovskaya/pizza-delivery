@@ -1,0 +1,112 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background-color: var(--bgLightColor);
+  box-shadow: var(--boxShadow);
+}
+
+.navigation-inner {
+  composes: grid-center from "../../styles/grid.module.css";
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+  padding: 0 0 0 100px;
+}
+
+.navigation-logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  padding-left: 10px;
+  color: var(--mainColor);
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background-color: var(--accentColor);
+  border-bottom-right-radius: 60px;
+}
+
+.navigation-logo:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  background: var(--accentColor);
+  margin-right: 100%;
+}
+
+.navigation-cart {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.navigation-cart-icon-wrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 468px) {
+  .navigation-cart-icon-wrapper {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.navigation-cart-icon {
+  width: 100%;
+  height: auto;
+  transition: fill var(--transitionOptions);
+}
+
+.navigation-cart:hover .navigation-cart-icon {
+  fill: var(--primaryColor);
+}
+
+.navigation-cart-counter {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lightTextColor);
+  background-color: var(--primaryColor);
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.navigation-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  margin: 0 4px;
+  text-decoration: none;
+  color: var(--mainColor);
+  transition: color var(--transitionOptions);
+}
+
+.navigation-link:hover {
+  color: var(--primaryColor);
+}

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5df88603.chunk.css",
+    "main.js": "/static/js/main.b91f647e.chunk.js",
+    "main.js.map": "/static/js/main.b91f647e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/js/2.4bf92e47.chunk.js": "/static/js/2.4bf92e47.chunk.js",
+    "static/js/2.4bf92e47.chunk.js.map": "/static/js/2.4bf92e47.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1a2fbe3ecbde06c6d8e226cc3b8c0140.js": "/precache-manifest.1a2fbe3ecbde06c6d8e226cc3b8c0140.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.5df88603.chunk.css.map": "/static/css/main.5df88603.chunk.css.map",
+    "static/js/2.4bf92e47.chunk.js.LICENSE.txt": "/static/js/2.4bf92e47.chunk.js.LICENSE.txt",
+    "static/media/basketIcon.c92a8375.svg": "/static/media/basketIcon.c92a8375.svg",
+    "static/media/minusIcon.b80e862b.svg": "/static/media/minusIcon.b80e862b.svg",
+    "static/media/pizza.164f13a5.svg": "/static/media/pizza.164f13a5.svg",
+    "static/media/plusIcon.effe9161.svg": "/static/media/plusIcon.effe9161.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/js/2.4bf92e47.chunk.js",
+    "static/css/main.5df88603.chunk.css",
+    "static/js/main.b91f647e.chunk.js"
+  ]
+}

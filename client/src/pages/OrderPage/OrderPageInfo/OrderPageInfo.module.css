@@ -1,0 +1,9 @@
+.order-page-info {
+  margin-bottom: 8px;
+}
+
+.order-page-info-title {
+  margin-right: 8px;
+  font-weight: 500;
+  color: var(--primaryColor);
+}

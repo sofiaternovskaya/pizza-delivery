@@ -1,0 +1,24 @@
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 12px;
+  color: var(--lightTextColor);
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: var(--primaryColor);
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  transition: background-color var(--transitionOptions);
+}
+
+.primary-button:hover {
+  background-color: var(--hoverPrimaryColor);
+  cursor: pointer;
+}
+
+.primary-button.user-button {
+  margin-bottom: 40px;
+}

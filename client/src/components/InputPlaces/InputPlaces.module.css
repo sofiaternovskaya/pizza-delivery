@@ -1,0 +1,59 @@
+.input-places {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.input-places-input {
+  font-size: 14px;
+  font-weight: 200;
+  color: var(--secondaryTextColor);
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid var(--borderColor);
+  transition: border-color var(--transitionOptions);
+}
+
+.input-places-input:focus,
+.input-places-input:hover,
+.input-places-input:active {
+  outline: none;
+  border-bottom-color: var(--accentColor);
+}
+
+.input-places-error .input-places-input {
+  border-bottom-color: var(--alarmColor);
+}
+
+.input-places-label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.input-places-error-message {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  font-size: 12px;
+  font-weight: 200;
+  color: var(--alarmColor);
+}
+
+.input-places-suggestions-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--borderColor);
+}
+
+.input-places-suggestion {
+  padding: 4px 8px;
+  transition: color var(--transitionOptions);
+}
+
+.input-places-suggestion:hover {
+  cursor: pointer;
+  color: var(--primaryColor);
+}

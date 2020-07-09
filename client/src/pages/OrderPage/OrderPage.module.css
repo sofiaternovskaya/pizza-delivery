@@ -1,0 +1,7 @@
+.order-page {
+  composes: grid-center from "../../styles/grid.module.css";
+}
+
+.order-page-title {
+  margin: 0 0 24px 0;
+}

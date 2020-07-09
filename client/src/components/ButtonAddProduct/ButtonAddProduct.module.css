@@ -1,0 +1,71 @@
+.button-add-product,
+.button-add-product-empty {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--borderColor);
+}
+
+.button-add-product-light {
+  background-color: var(--bgLightColor);
+}
+
+.button-add-product-icon-wrapper {
+  display: flex;
+  padding: 10px;
+  transition: background-color var(--transitionOptions);
+  cursor: pointer;
+}
+
+.button-add-product-icon-wrapper:last-child {
+  background-color: var(--primaryColor);
+}
+
+.button-add-product-icon-wrapper:last-child:hover {
+  background-color: var(--hoverPrimaryColor);
+}
+
+.button-add-product-icon {
+  width: 10px;
+  height: 10px;
+}
+
+.button-add-product-icon-wrapper:last-child .button-add-product-icon {
+  fill: var(--iconColor);
+}
+
+.button-add-product
+  .button-add-product-icon-wrapper:first-child
+  .button-add-product-icon {
+  fill: var(--borderColor);
+  transition: fill var(--transitionOptions);
+}
+
+.button-add-product
+  .button-add-product-icon-wrapper:first-child:hover
+  .button-add-product-icon {
+  fill: var(--hoverBorderColor);
+}
+
+.button-add-product-empty .button-add-product-icon-wrapper:first-child {
+  display: none;
+}
+
+.button-add-product-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  padding-right: 8px;
+}
+
+.button-add-product-empty .button-add-product-number {
+  display: none;
+}
+
+.catalog-item-page-button {
+  margin-bottom: 24px;
+}

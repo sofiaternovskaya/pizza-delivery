@@ -1,0 +1,14 @@
+.catalog {
+  composes: grid-center from "../../styles/grid.module.css";
+}
+
+.catalog-items-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 -8px;
+}
+
+.catalog-items-wrapper:not(:last-child) {
+  margin-bottom: 32px;
+}

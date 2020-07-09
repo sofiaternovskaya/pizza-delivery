@@ -1,0 +1,10 @@
+.catalog-category:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.catalog-category-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 -8px;
+}

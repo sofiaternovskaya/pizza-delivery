@@ -1,0 +1,19 @@
+.user {
+  composes: grid-center from "../../styles/grid.module.css";
+}
+
+.user-center {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.user-info {
+  margin-bottom: 16px;
+}
+
+.user-info-row-name {
+  color: var(--secondaryTextColor);
+  font-weight: 600;
+  margin-right: 8px;
+}

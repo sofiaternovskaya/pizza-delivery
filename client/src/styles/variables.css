@@ -1,0 +1,29 @@
+:root {
+  --mainColor: #000;
+  --secondaryTextColor: #6e6e6e;
+  --lightTextColor: #fff;
+  --primaryColor: #fd6769;
+  --accentColor: #fdce51;
+  --alarmColor: #ff0000;
+
+  --bgColor: #f9f9f9;
+  --bgLightColor: var(--lightTextColor);
+  --iconColor: var(--lightTextColor);
+  --borderColor: #e2e2e2;
+
+  --hoverPrimaryColor: #d64e4f;
+  --hoverBorderColor: #a9a1a1;
+
+  --fontSize: 16px;
+  --lineHeight: 20px;
+
+  --gutter: 36px;
+
+  --maxContainer: 1200px;
+
+  --viewport-md: 768px;
+
+  --boxShadow: 0 1px 3px 2px var(--borderColor);
+  --boxShadowAlarm: 0px 0px 2px 1px var(--alarmColor);
+  --transitionOptions: 0.2s ease-in;
+}

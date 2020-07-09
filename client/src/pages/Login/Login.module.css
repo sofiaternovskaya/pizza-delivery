@@ -1,0 +1,19 @@
+.login {
+  composes: grid-center from "../../styles/grid.module.css";
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.login-form {
+  width: 300px;
+}
+
+.login-error {
+  position: absolute;
+  right: 16px;
+  top: 20px;
+  font-size: 12px;
+  font-weight: 200;
+  color: var(--alarmColor);
+}

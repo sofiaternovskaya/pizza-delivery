@@ -1,0 +1,6 @@
+.layout-grid {
+  composes: grid-center from "../../styles/grid.module.css";
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
