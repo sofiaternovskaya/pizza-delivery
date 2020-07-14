@@ -2,3 +2,5 @@ node_modules/
 .idea/*
 *.log
 migration/
+dist/
+build/
