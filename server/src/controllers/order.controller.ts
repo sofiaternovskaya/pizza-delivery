@@ -12,13 +12,11 @@ const getOrder: RequestHandler = async (req, res) => {
 };
 
 const createOrder: RequestHandler = async (req, res) => {
-  await orderService.createOrder(
-    req.body.name,
-    req.body.phone,
-    req.body.address,
-    req.body.orders,
-    req.user.id
-  );
+  if (req.user !== undefined) {
+    await orderService.createOrder({ ...req.body, userId: req.user.id });
+  } else {
+    await orderService.createOrder({ ...req.body });
+  }
   res.sendStatus(200);
 };
 

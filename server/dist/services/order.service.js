@@ -41,43 +41,48 @@ var order_entity_1 = require("../entities/order/order.entity");
 var order_item_entity_1 = require("../entities/order/order_item.entity");
 var product_entity_1 = require("../entities/product/product.entity");
 var delivery_entity_1 = require("../entities/delivery/delivery.entity");
-var createOrder = function (name, phoneNumber, address, productItems, userId) { return __awaiter(void 0, void 0, void 0, function () {
-    var newOrder, deliveryPrice, productPrices;
-    var _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                newOrder = new order_entity_1.Order();
-                _a = [
-                    name,
-                    phoneNumber,
-                    address,
-                ], newOrder.user_name = _a[0], newOrder.user_phone_number = _a[1], newOrder.user_address = _a[2];
-                return [4 /*yield*/, typeorm_1.getRepository(delivery_entity_1.Delivery).findOne()];
-            case 1:
-                deliveryPrice = _b.sent();
-                newOrder.delivery_usd = deliveryPrice.delivery_usd;
-                newOrder.delivery_eur = deliveryPrice.delivery_eur;
-                newOrder.user = { id: userId };
-                return [4 /*yield*/, typeorm_1.getRepository(product_entity_1.Product).findByIds(productItems.map(function (item) { return item.id; }), {
-                        select: ["id", "price_usd", "price_eur"]
-                    })];
-            case 2:
-                productPrices = _b.sent();
-                newOrder.order_items = productItems.map(function (_a) {
-                    var id = _a.id, quantity = _a.quantity;
-                    var newOrderItem = new order_item_entity_1.OrderItem();
-                    newOrderItem.product = [{ id: id }];
-                    newOrderItem.quantity = quantity;
-                    newOrderItem.price_usd = productPrices.find(function (item) { return item.id === id; }).price_usd;
-                    newOrderItem.price_eur = productPrices.find(function (item) { return item.id === id; }).price_eur;
-                    return newOrderItem;
-                });
-                return [4 /*yield*/, typeorm_1.getRepository(order_entity_1.Order).save(newOrder)];
-            case 3: return [2 /*return*/, _b.sent()];
-        }
+var createOrder = function (_a) {
+    var name = _a.name, phone = _a.phone, address = _a.address, orders = _a.orders, userId = _a.userId;
+    return __awaiter(void 0, void 0, void 0, function () {
+        var newOrder, deliveryPrice, productPrices;
+        var _b;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0:
+                    newOrder = new order_entity_1.Order();
+                    _b = [
+                        name,
+                        phone,
+                        address,
+                    ], newOrder.user_name = _b[0], newOrder.user_phone_number = _b[1], newOrder.user_address = _b[2];
+                    return [4 /*yield*/, typeorm_1.getRepository(delivery_entity_1.Delivery).findOne()];
+                case 1:
+                    deliveryPrice = _c.sent();
+                    newOrder.delivery_usd = deliveryPrice.delivery_usd;
+                    newOrder.delivery_eur = deliveryPrice.delivery_eur;
+                    if (userId) {
+                        newOrder.user = { id: userId };
+                    }
+                    return [4 /*yield*/, typeorm_1.getRepository(product_entity_1.Product).findByIds(orders.map(function (item) { return item.id; }), {
+                            select: ["id", "price_usd", "price_eur"]
+                        })];
+                case 2:
+                    productPrices = _c.sent();
+                    newOrder.order_items = orders.map(function (_a) {
+                        var id = _a.id, quantity = _a.quantity;
+                        var newOrderItem = new order_item_entity_1.OrderItem();
+                        newOrderItem.product = [{ id: id }];
+                        newOrderItem.quantity = quantity;
+                        newOrderItem.price_usd = productPrices.find(function (item) { return item.id === id; }).price_usd;
+                        newOrderItem.price_eur = productPrices.find(function (item) { return item.id === id; }).price_eur;
+                        return newOrderItem;
+                    });
+                    return [4 /*yield*/, typeorm_1.getRepository(order_entity_1.Order).save(newOrder)];
+                case 3: return [2 /*return*/, _c.sent()];
+            }
+        });
     });
-}); };
+};
 var getOrders = function (userId) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {

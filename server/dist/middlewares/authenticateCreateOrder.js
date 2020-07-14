@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50,52 +39,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-var order_service_1 = __importDefault(require("../services/order.service"));
-var getOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, order_service_1["default"].getOrders(req.user.id)];
-            case 1:
-                orders = _a.sent();
-                res.send({ orders: orders });
-                return [2 /*return*/];
-        }
-    });
-}); };
-var getOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var order;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, order_service_1["default"].getOrderById(req.params.id)];
-            case 1:
-                order = _a.sent();
-                res.send({ order: order });
-                return [2 /*return*/];
-        }
-    });
-}); };
-var createOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var user_service_1 = __importDefault(require("../services/user.service"));
+var encryptionUtils_1 = require("../utilities/encryptionUtils");
+var constants_1 = __importDefault(require("../constants"));
+var authenticateCreateOrderMiddleware = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var authorizationHeader, decoded, user;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!(req.user !== undefined)) return [3 /*break*/, 2];
-                return [4 /*yield*/, order_service_1["default"].createOrder(__assign(__assign({}, req.body), { userId: req.user.id }))];
+                authorizationHeader = req.cookies.user;
+                if (!authorizationHeader) return [3 /*break*/, 3];
+                return [4 /*yield*/, encryptionUtils_1.verifyCookie(authorizationHeader)];
             case 1:
-                _a.sent();
-                return [3 /*break*/, 4];
-            case 2: return [4 /*yield*/, order_service_1["default"].createOrder(__assign({}, req.body))];
+                decoded = _a.sent();
+                return [4 /*yield*/, user_service_1["default"].getUserById(decoded[constants_1["default"].Cookie.KEY_USER_ID])];
+            case 2:
+                user = _a.sent();
+                req.user = user;
+                _a.label = 3;
             case 3:
-                _a.sent();
-                _a.label = 4;
-            case 4:
-                res.sendStatus(200);
+                next();
                 return [2 /*return*/];
         }
     });
 }); };
-exports["default"] = {
-    getOrders: getOrders,
-    getOrder: getOrder,
-    createOrder: createOrder
-};
+exports["default"] = authenticateCreateOrderMiddleware;

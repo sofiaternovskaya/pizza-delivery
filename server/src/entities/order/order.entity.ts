@@ -15,7 +15,8 @@ export class Order {
 
   @ManyToOne(
     () => User,
-    user => user.orders
+    user => user.orders,
+    { nullable: true }
   )
   user: User;
 

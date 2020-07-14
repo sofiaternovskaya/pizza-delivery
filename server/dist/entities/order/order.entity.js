@@ -21,7 +21,7 @@ var Order = /** @class */ (function () {
         __metadata("design:type", String)
     ], Order.prototype, "id");
     __decorate([
-        typeorm_1.ManyToOne(function () { return user_entity_1.User; }, function (user) { return user.orders; }),
+        typeorm_1.ManyToOne(function () { return user_entity_1.User; }, function (user) { return user.orders; }, { nullable: true }),
         __metadata("design:type", user_entity_1.User)
     ], Order.prototype, "user");
     __decorate([

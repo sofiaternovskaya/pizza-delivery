@@ -30,25 +30,25 @@ var bodyParser = __importStar(require("body-parser"));
 var typeorm_1 = require("typeorm");
 var morgan_1 = __importDefault(require("morgan"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
-// import cors from "cors";
+var cors_1 = __importDefault(require("cors"));
 var application_1 = __importDefault(require("./constants/application"));
 var apiErrorHandler_1 = require("./middlewares/apiErrorHandler");
 var joiErrorHandler_1 = require("./middlewares/joiErrorHandler");
 var index_route_1 = __importDefault(require("./routes/index.route"));
 var PORT = process.env.PORT || 5000;
-// const ORIGIN = "http://localhost:3000" || "5000";
-// const corsOptions = {
-//   origin: ORIGIN,
-//   optionsSuccessStatus: 200,
-//   credentials: true,
-// };
+var ORIGIN = "http://localhost:3000" || "";
+var corsOptions = {
+    origin: ORIGIN,
+    optionsSuccessStatus: 200,
+    credentials: true
+};
 typeorm_1.createConnection()
     .then(function () {
     var app = express_1["default"]();
     app.use(bodyParser.json());
     app.use(morgan_1["default"]("dev"));
     app.use(cookie_parser_1["default"]());
-    // app.use(cors(corsOptions));
+    app.use(cors_1["default"](corsOptions));
     app.use(express_1["default"].static(path_1["default"].resolve(__dirname, "../build")));
     app.use(application_1["default"].url.base, index_route_1["default"]);
     app.get("*", function (req, res) {
@@ -58,7 +58,7 @@ typeorm_1.createConnection()
     app.use(apiErrorHandler_1.notFoundErrorHandler);
     app.use(apiErrorHandler_1.errorHandler);
     app.listen(PORT, function () {
-        console.log("Listening on port");
+        console.log("Listening on port", PORT);
     });
 })["catch"](function (error) {
     console.log("Error", error);

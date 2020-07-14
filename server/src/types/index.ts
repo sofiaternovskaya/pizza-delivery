@@ -5,7 +5,7 @@ import { User } from "../entities/user/user.entity";
 declare global {
   namespace Express {
     export interface Request {
-      user: Omit<User, "password">;
+      user?: Omit<User, "password">;
     }
   }
 }

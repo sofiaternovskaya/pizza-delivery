@@ -5,30 +5,40 @@ import { OrderItem } from "../entities/order/order_item.entity";
 import { Product } from "../entities/product/product.entity";
 import { Delivery } from "../entities/delivery/delivery.entity";
 
-const createOrder = async (
-  name: string,
-  phoneNumber: string,
-  address: string,
-  productItems: { id: string; quantity: number }[],
-  userId: string
-) => {
+type TProps = {
+  name: string;
+  phone: string;
+  address: string;
+  orders: { id: string; quantity: number }[];
+  userId?: string;
+};
+
+const createOrder = async ({
+  name,
+  phone,
+  address,
+  orders,
+  userId,
+}: TProps) => {
   const newOrder = new Order();
   [newOrder.user_name, newOrder.user_phone_number, newOrder.user_address] = [
     name,
-    phoneNumber,
+    phone,
     address,
   ];
   const deliveryPrice = await getRepository(Delivery).findOne();
   newOrder.delivery_usd = deliveryPrice.delivery_usd;
   newOrder.delivery_eur = deliveryPrice.delivery_eur;
-  newOrder.user = { id: userId } as User;
+  if (userId) {
+    newOrder.user = { id: userId } as User;
+  }
   const productPrices = await getRepository(Product).findByIds(
-    productItems.map(item => item.id),
+    orders.map(item => item.id),
     {
       select: ["id", "price_usd", "price_eur"],
     }
   );
-  newOrder.order_items = productItems.map(({ id, quantity }) => {
+  newOrder.order_items = orders.map(({ id, quantity }) => {
     const newOrderItem = new OrderItem();
     newOrderItem.product = [{ id } as Product];
     newOrderItem.quantity = quantity;
