@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
+import { getProductsInCartNumber } from "../../helpers/getProductsInCartNumber";
 import { CurrencyDropdown } from "../CurrencyDropdown/CurrencyDropdown";
 import { ReactComponent as BasketIcon } from "./assets/basketIcon.svg";
 import style from "./Navigation.module.css";
@@ -34,7 +35,7 @@ export function Navigation() {
             <BasketIcon className={style["navigation-cart-icon"]} />
             {Object.keys(cart).length > 0 && (
               <span className={style["navigation-cart-counter"]}>
-                {Object.keys(cart).length}
+                {getProductsInCartNumber(cart)}
               </span>
             )}
           </div>
