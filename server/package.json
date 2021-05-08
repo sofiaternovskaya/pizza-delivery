@@ -64,7 +64,7 @@
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.15"
+    "typeorm": "^0.2.25"
   },
   "husky": {
     "hooks": {
